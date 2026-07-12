@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Desert Thorn Keeper</title>
+  <meta name="description" content="A calm, offline cactus care puzzle. Read symptoms, choose the right care action, and bloom 50 thorny friends.">
+  <style>
+    :root {
+      --bg: #0e1320;
+      --panel: #1b2138;
+      --panel-alt: #252a3f;
+      --text: #f5f5f5;
+      --muted: #b5b5c2;
+      --accent: #f59c3a;
+      --accent-2: #41a5f2;
+      --success: #38b46e;
+      --danger: #de4640;
+      --line: rgba(255,255,255,.14);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 80px 20px 60px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 52px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero .subtitle {
+      font-size: 20px;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+    .hero .intro {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* Screenshots */
+    .screens { padding: 40px 0; }
+    .screens h2, section h2 {
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .shot-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .shot-card img { width: 100%; display: block; }
+    .shot-card h3 { font-size: 15px; padding: 12px 14px 4px; }
+    .shot-card p { font-size: 13px; color: var(--muted); padding: 0 14px 14px; }
+
+    /* About */
+    .about { padding: 40px 0; }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 28px;
+    }
+    .card p { margin-bottom: 14px; color: var(--muted); }
+    .card p:last-child { margin-bottom: 0; }
+    .card strong { color: var(--text); }
+
+    /* How to Play */
+    .howto { padding: 40px 0; }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .feature-card {
+      background: var(--panel-alt);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 22px;
+    }
+    .step {
+      display: inline-block;
+      width: 32px; height: 32px;
+      line-height: 32px;
+      text-align: center;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+    .feature-card h3 { font-size: 17px; margin-bottom: 8px; }
+    .feature-card p { font-size: 14px; color: var(--muted); }
+
+    /* Support */
+    .support { padding: 40px 0; }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    /* App Info */
+    .info { padding: 40px 0; }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 12px;
+    }
+    .info-grid > div {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .info-grid .label {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin-bottom: 4px;
+    }
+    .info-grid .value { font-size: 15px; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer > div { margin: 4px 0; }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="hero">
+      <div class="badge">Games / Puzzle / Strategy</div>
+      <h1>Desert Thorn Keeper</h1>
+      <p class="subtitle">Tend the thorn, guard the bloom.</p>
+      <p class="intro">A calm, offline cactus care puzzle. Read each symptom, choose the matching care action, and guide 50 thorny friends from sprout to bloom. No timers panic, no internet, no ads.</p>
+    </header>
+
+    <section class="screens">
+      <h2>Screenshots</h2>
+      <div class="grid">
+        <div class="shot-card">
+          <img src="screenshots_65/01_menu.jpg" alt="Main menu of Desert Thorn Keeper">
+          <h3>Main Menu</h3>
+          <p>Choose Start Grow, Levels, or Settings from the home screen.</p>
+        </div>
+        <div class="shot-card">
+          <img src="screenshots_65/02_gameplay.jpg" alt="Core cactus care gameplay">
+          <h3>Care Gameplay</h3>
+          <p>Watch the cactus, read symptom events, and pick the right care action.</p>
+        </div>
+        <div class="shot-card">
+          <img src="screenshots_65/03_symptom.jpg" alt="Symptom event with care hint">
+          <h3>Symptom Event</h3>
+          <p>A symptom appears. Tutorial levels show the care hint; later levels only describe the symptom.</p>
+        </div>
+        <div class="shot-card">
+          <img src="screenshots_65/04_gameplay.jpg" alt="Mid-level growth progress">
+          <h3>Growth Progress</h3>
+          <p>Manage water, nutrient, drainage, and pests while weather drifts on its own.</p>
+        </div>
+        <div class="shot-card">
+          <img src="screenshots_65/05_complete.jpg" alt="Bloom success screen">
+          <h3>Bloom Success</h3>
+          <p>The cactus blooms. Unlock the next level and continue the journey.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about">
+      <h2>About Desert Thorn Keeper</h2>
+      <div class="card">
+        <p><strong>Desert Thorn Keeper</strong> is a calm, single-player cactus care puzzle built with SpriteKit. Each level presents a potted cactus from one of five families &mdash; Barrel, Prickly Pear, Moon, Saguaro, or Holiday &mdash; each with its own optimal ranges for water, sun, and wind.</p>
+        <p>The game spans <strong>50 levels</strong> with a linear difficulty curve. Levels 1&ndash;3 are tutorial levels that display the correct care hint during symptom events. From level 4 onward, symptom events only describe the visible signs, and you must infer the matching care action yourself.</p>
+        <p>Six care actions are available: Water +5, Water +15, Water +25, Fertilizer, Drain Soil, and Pest Care. Each cactus cycles through five growth stages (Root Check, Soil Balance, Growth Prep, Plant Inspection, Bloom Push). Weather values (sun, wind) drift on their own and cannot be directly controlled &mdash; you can only manage water, nutrients, drainage, and pests.</p>
+      </div>
+    </section>
+
+    <section class="howto">
+      <h2>How to Play</h2>
+      <div class="features">
+        <div class="feature-card">
+          <span class="step">1</span>
+          <h3>Start a Level</h3>
+          <p>Tap Start Grow on the main menu to continue from your highest unlocked level, or visit Levels to pick any unlocked stage.</p>
+        </div>
+        <div class="feature-card">
+          <span class="step">2</span>
+          <h3>Watch the Cactus</h3>
+          <p>A health bar, growth bar, water level, and timer sit at the top. The cactus changes color when conditions are unsafe.</p>
+        </div>
+        <div class="feature-card">
+          <span class="step">3</span>
+          <h3>Read Symptom Events</h3>
+          <p>Symptom events appear during the Growth Prep stage and beyond. Each symptom maps to one correct care action that depends on the cactus family.</p>
+        </div>
+        <div class="feature-card">
+          <span class="step">4</span>
+          <h3>Tap the Right Care</h3>
+          <p>Use Water +5/+15/+25, Fertilizer, Drain, or Pest Care. A wrong action during an event ends the level. Outside events, actions only adjust resources.</p>
+        </div>
+        <div class="feature-card">
+          <span class="step">5</span>
+          <h3>Keep Health Above Zero</h3>
+          <p>Health drops while a symptom is active. Complete the matching care action before the event timer runs out to restore health.</p>
+        </div>
+        <div class="feature-card">
+          <span class="step">6</span>
+          <h3>Reach Full Bloom</h3>
+          <p>Growth progress fills automatically over time. Reach 100% growth with health above zero to bloom the cactus and unlock the next level.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="support">
+      <h2>Support</h2>
+      <div class="feature-grid">
+        <div class="card">
+          <h3>How do I play?</h3>
+          <p>Tap the care button that matches the visible symptom. Tutorial levels (1&ndash;3) show the correct hint. Later levels describe symptoms only &mdash; experiment and learn which care each family needs.</p>
+        </div>
+        <div class="card">
+          <h3>Does it need internet?</h3>
+          <p>No. Desert Thorn Keeper is fully offline. No ads, no in-app purchases, no accounts, no analytics, no tracking.</p>
+        </div>
+        <div class="card">
+          <h3>Need help?</h3>
+          <p>Visit the App Store product page for Desert Thorn Keeper to contact support after release.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="info">
+      <h2>App Information</h2>
+      <div class="info-grid">
+        <div><span class="label">Genre</span><div class="value">Games / Puzzle</div></div>
+        <div><span class="label">Compatibility</span><div class="value">iOS 15.0 or later</div></div>
+        <div><span class="label">Device Support</span><div class="value">iPhone only</div></div>
+        <div><span class="label">Age Rating</span><div class="value">4+</div></div>
+        <div><span class="label">Version</span><div class="value">1.0</div></div>
+        <div><span class="label">Language</span><div class="value">English</div></div>
+        <div><span class="label">Privacy</span><div class="value">No data collected</div></div>
+        <div><span class="label">Bundle ID</span><div class="value">com.rosewood.desertthornkeeper.game</div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>&copy; 2026 Desert Thorn Keeper. All rights reserved.</div>
+    <div><a href="/privacy.html">Privacy Policy</a></div>
+  </footer>
+</body>
+</html>
